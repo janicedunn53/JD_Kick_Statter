@@ -43,3 +43,30 @@ patch("/team/:id/record") do
   @team.update(:win => win, :loss => loss, :draw => draw)
   redirect("/team/#{@team.id()}")
 end
+
+get("/player/:id") do
+  player_id = params.fetch("id").to_i()
+  @player = Player.find(player_id)
+  erb(:player)
+end
+
+get("/player/:id/stats") do
+  @player = Player.find(params.fetch("id").to_i)
+  erb(:add_stats)
+end
+
+post("/player/:id") do
+  @player = Player.find(params.fetch("id").to_i)
+  k_hits = params.fetch("k_hits")
+  at_bats = params.fetch("at_bats")
+  singles = params.fetch("singles")
+  doubles = params.fetch("doubles")
+  triples = params.fetch("triples")
+  k_home_runs = params.fetch("k_home_runs")
+  k_runs = params.fetch("k_runs")
+  rbi = params.fetch("rbi")
+  k_walks = params.fetch("k_walks")
+  k_strikeouts = params.fetch("k_strikeouts")
+  @player.kickers.create(:hits => k_hits, :at_bats => at_bats, :singles => singles, :doubles => doubles, :triples => triples, :home_runs => k_home_runs, :runs => k_runs, :rbi => rbi, :walks => k_walks, :strikeouts => k_strikeouts)
+  redirect("player/#{@player.id}")
+end

@@ -1,6 +1,7 @@
 <h2><%= @player.name %> - <%= @player.jersey_number %></h2>
 <h3><%= @player.position %></h3>
 
+<br>
 <% if @player.kickers.any?() %>
   <h3>Kicker stats:</h3>
   <table class="table table-striped table-hover">
@@ -110,3 +111,6 @@
 <% end %>
 
 <a href="/player/<%= @player.id() %>/stats">Add Stats</a>
+
+<br>
+<h5><a href="/">Home</a></h5>

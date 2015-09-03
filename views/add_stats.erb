@@ -2,7 +2,7 @@
 
 <h3>Kickers</h3>
 
-<form action="/player/:id" method="post" class="form-horizontal">
+<form action="/player/<%= @player.id() %>" method="post" class="form-horizontal">
   <label for="k_hits">Hits</label>
   <input type="text" name="k_hits" id="k_hits" placeholder="Hits">
   <label for="at_bats">At Bats</label>

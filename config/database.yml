@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: kick_statter
+
+test:
+  adapter: postgresql
+  database: kick_statter_test

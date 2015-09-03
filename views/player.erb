@@ -1,0 +1,112 @@
+<h2><%= @player.name %> - <%= @player.jersey_number %></h2>
+<h3><%= @player.position %></h3>
+
+<% if @player.kickers.any?() %>
+  <h3>Kicker stats:</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Hits</th>
+        <th>At Bats</th>
+        <th>Singles</th>
+        <th>Doubles</th>
+        <th>Triples</th>
+        <th>Home Runs</th>
+        <th>Runs</th>
+        <th>RBI</th>
+        <th>Walks</th>
+        <th>Strikeouts</th>
+      </tr>
+    </thead>
+    <% @player.kickers.each() do |player_kicker| %>
+    <tr>
+      <td><%= player_kicker.hits() %></td>
+      <td><%= player_kicker.at_bats() %></td>
+      <td><%= player_kicker.singles() %></td>
+      <td><%= player_kicker.doubles() %></td>
+      <td><%= player_kicker.triples() %></td>
+      <td><%= player_kicker.home_runs() %></td>
+      <td><%= player_kicker.runs() %></td>
+      <td><%= player_kicker.rbi() %></td>
+      <td><%= player_kicker.walks() %></td>
+      <td><%= player_kicker.strikeouts() %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h4>There are no kicking stats for this player yet.</h4>
+<% end %>
+
+<a href="/player/<%= @player.id() %>/stats">Add Stats</a>
+
+<% if @player.pitchers.any?() %>
+  <h3>Pitcher stats:</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Batters Faced</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Earned Runs</th>
+        <th>Runs</th>
+        <th>Hits</th>
+        <th>Home Runs</th>
+        <th>Walks</th>
+        <th>Strikeouts</th>
+        <th>Wild Pitch</th>
+        <th>Saves</th>
+        <th>Strikes</th>
+        <th>Balls</th>
+        <th>Pitches</th>
+      </tr>
+    </thead>
+    <% @player.pitchers.each() do |player_pitcher| %>
+    <tr>
+      <td><%= player_pitcher.batters_faced() %></td>
+      <td><%= player_pitcher.wins() %></td>
+      <td><%= player_pitcher.losses() %></td>
+      <td><%= player_pitcher.earned_runs() %></td>
+      <td><%= player_pitcher.runs() %></td>
+      <td><%= player_pitcher.hits() %></td>
+      <td><%= player_pitcher.home_runs() %></td>
+      <td><%= player_pitcher.walks() %></td>
+      <td><%= player_pitcher.strikeouts() %></td>
+      <td><%= player_pitcher.wild_pitch() %></td>
+      <td><%= player_pitcher.saves() %></td>
+      <td><%= player_pitcher.strikes() %></td>
+      <td><%= player_pitcher.balls() %></td>
+      <td><%= player_pitcher.pitches() %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h4>There are no pitching stats for this player yet.</h4>
+<% end %>
+
+<a href="/player/<%= @player.id() %>/stats">Add Stats</a>
+
+<% if @player.fielders.any?() %>
+  <h3>Fielder stats:</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Innings Played</th>
+        <th>Put Outs</th>
+        <th>Fielding Errors</th>
+        <th>Throwing Errors</th>
+      <tr>
+    </thead>
+    <% @player.fielders.each() do |player_fielder| %>
+    <tr>
+      <td><%= player_fielder.innings_played() %></td>
+      <td><%= player_fielder.put_outs() %></td>
+      <td><%= player_fielder.fielding_errors() %></td>
+      <td><%= player_fielder.throwing_errors() %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h4>There are no fielding stats for this player yet.</h4>
+<% end %>
+
+<a href="/player/<%= @player.id() %>/stats">Add Stats</a>

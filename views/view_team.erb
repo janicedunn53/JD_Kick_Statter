@@ -1,0 +1,70 @@
+<div class="jumbotron">
+  <h1><%= @team.name() %> Record</h1>
+</div>
+
+  <form action="/team/<%= @team.id() %>/record" method="post">
+    <input type="hidden" value="<%= @team.id() %>">
+    <input type="hidden" name="_method" value="patch">
+    <label for="win">Wins:</label>
+    <input type="text" name="win">
+    <label for="loss">Loss:</label>
+    <input type="text" name="loss">
+    <label for="draw">Draw:</label>
+    <input type="text" name="draw">
+
+    <button type="submit" class="btn btn-danger">Add</button>
+  </form>
+
+  <table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th>Wins</th>
+      <th>Loss</th>
+      <th>Draw</th>
+    </tr>
+  </thead>
+      <tr>
+        <td><%= @team.win() %></td>
+        <td><%= @team.loss() %></td>
+        <td><%= @team.draw() %></td>
+      </tr>
+
+  </table>
+
+  <h1>Here is the team's roster</h1>
+<% if @team.players.any?() %>
+  <h3>Roster:</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Jersey Number</th>
+      </tr>
+    </thead>
+    <% @team.players.each() do |player| %>
+    <tr>
+      <td><%= player.name() %></td>
+      <td><%= player.position() %></td>
+      <td><%= player.jersey_number() %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h4>There are no players on the roster yet.</h4>
+<% end %>
+
+<form class="form-inline" action="/team/<%= @team.id() %>/player" method="post">
+    <label for="name"></label>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="hidden" name="team_id" value="<%= @team.id() %>">
+
+    <label for="position"></label>
+    <input type="text" name="position" placeholder="Position" required>
+
+    <label for="jersey_number"></label>
+    <input type="text" name="jersey_number" placeholder="Jersey Number" required>
+
+    <button type="submit" class="btn btn-primary">Add Player</button>
+</form>

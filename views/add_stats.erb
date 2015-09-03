@@ -28,7 +28,7 @@
 
 <h3>Pitchers</h3>
 
-<form action="/player/:id" method="post"class="form-horizontal">
+<form action="/player/<%= @player.id() %>" method="post"class="form-horizontal">
   <label for="batters_faced">Batters Faced</label>
   <input type="text" name="batters_faced" id="batters_faced" placeholder="Batters Faced">
   <label for="wins">Wins</label>
@@ -62,7 +62,7 @@
 
 <h3>Fielders</h3>
 
-<form action="/player/:id" method="post" class="form-horizontal">
+<form action="/player/<%= @player.id() %>" method="post" class="form-horizontal">
   <label for="innings_played">Innings Played</label>
   <input type="text" name="innings_played" id="innings_played" placeholder="Innings Played">
   <label for="put_outs">Put Out</label>

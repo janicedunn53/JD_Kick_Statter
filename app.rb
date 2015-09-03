@@ -56,7 +56,7 @@ get("/player/:id/stats") do
 end
 
 post("/player/:id") do
-  @player = Player.find(params.fetch("id").to_i)
+  @player = Player.find(params.fetch("id").to_i())
   k_hits = params.fetch("k_hits")
   at_bats = params.fetch("at_bats")
   singles = params.fetch("singles")
@@ -70,3 +70,32 @@ post("/player/:id") do
   @player.kickers.create(:hits => k_hits, :at_bats => at_bats, :singles => singles, :doubles => doubles, :triples => triples, :home_runs => k_home_runs, :runs => k_runs, :rbi => rbi, :walks => k_walks, :strikeouts => k_strikeouts)
   redirect("player/#{@player.id}")
 end
+
+# post("/player/:id") do
+#   @player = Player.find(params.fetch("id").to_i)
+#   batters_faced = params.fetch("batters_faced")
+#   wins = params.fetch("wins")
+#   losses = params.fetch("losses")
+#   earned_runs = params.fetch("earned_runs")
+#   p_runs = params.fetch("p_runs")
+#   p_hits = params.fetch("p_hits")
+#   p_home_runs = params.fetch("p_home_runs")
+#   p_walks = params.fetch("p_walks")
+#   p_strikeouts = params.fetch("p_strikeouts")
+#   wild_pitch = params.fetch("wild_pitch")
+#   saves = params.fetch("saves")
+#   strikes = params.fetch("strikes")
+#   balls = params.fetch("balls")
+#   @player.pitchers.create(:batters_faced => batters_faced, :wins => wins, :losses => losses, :earned_runs => earned_runs, :runs => p_runs, :hits => p_hits, :home_runs => p_home_runs, :walks => p_walks, :strikeouts => p_strikeouts, :wild_pitch => wild_pitch, :saves => saves, :strikes => strikes, :balls => balls, :pitches => pitches)
+#   redirect("player/#{@player.id}")
+# end
+
+# post("/player/:id") do
+#   @player = Player.find(params.fetch("id").to_i())
+#   innings_played = params.fetch("innings_played")
+#   put_outs = params.fetch("put_outs")
+#   fielding_errors = params.fetch("fielding_errors")
+#   throwing_errors = params.fetch("throwing_errors")
+#   @player.fielders.create(:innings_played => innings_played, :put_outs => put_outs, :fielding_errors => fielding_errors, :throwing_errors => throwing_errors)
+#   redirect("player/#{@player.id}")
+# end
